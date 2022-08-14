@@ -1,6 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import datastructures.*;
+import datastructures.queue.*;
 import java.util.Scanner;
 public class PlagiarismChecker {
     public QueueLink<String> textFiles = new QueueLink<String>();
