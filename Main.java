@@ -1,31 +1,51 @@
 import java.awt.*;
+import java.awt.event.*;
 import java.io.File;
 import javax.swing.*;
+public class Main extends JFrame {
+    public String path = ".";
+    public String[] paths;
+    public PlagiarismChecker pc;
+    public Main(){
+        setTitle("Plagiarism Checker");
+        setSize(300,400);
+        setLayout(new FlowLayout());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        createContents();
+        setVisible(true);
 
-public class Main {
+    }
+    private void createContents(){
+        JButton button = new JButton("Select Directory");
+        
+        Listener listener = new Listener();
+        add(button);
+        button.addActionListener(listener);
+    }
+
+    private class Listener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JFileChooser chooser;
+            chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setDialogTitle("Select Directory");
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            chooser.setAcceptAllFileFilterUsed(false);
+
+            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                path = chooser.getSelectedFile().getAbsolutePath();
+            } else {
+                System.out.println("No Selection ");
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        String path = "./reuters21578";
-        
-        
-        JFileChooser chooser;
-        String choosertitle = "Select Directory";
-        chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new java.io.File("."));
-        chooser.setDialogTitle(choosertitle);
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        new Main();
 
-        chooser.setAcceptAllFileFilterUsed(false);
-        
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            path = chooser.getSelectedFile().getAbsolutePath();
-        } else {
-            System.out.println("No Selection ");
-        }
 
-        PlagiarismChecker pc = new PlagiarismChecker();
-
-        File folder = new File(path);
+        File folder = new File("./reuters21578");
 
         File[] listOfFiles = folder.listFiles();
         String[] paths = new String[listOfFiles.length];
@@ -36,14 +56,6 @@ public class Main {
             }
             i++;
         }
-
-        pc.loadFiles(paths);
-        System.out.println(pc.textFiles.size());
-        System.out.println(pc.textFiles.poll().inOrder());
-        System.out.println();
-        System.out.println(pc.textFiles.poll().inOrder());
-        System.out.println(pc.textFiles.poll().inOrder());
-        System.out.println(pc.textFiles.poll().inOrder());
 
     }
 }
