@@ -19,6 +19,7 @@ public class PlagiarismChecker {
         try{
             Scanner fileIn;
             for(String path : paths) {
+                if(path == null) continue;
                 fileIn = new Scanner(new FileReader(path));
                 
                 textFiles.add(inputTreeText(fileIn));
