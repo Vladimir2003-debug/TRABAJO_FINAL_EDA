@@ -1,13 +1,12 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import datastructures.queue.*;
 import datastructures.binarytree.*;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PlagiarismChecker {
-    public QueueLink<BinaryTree<String>> textFiles; 
+    public BST<String>[] textFiles; 
     public BST<String> textToChecker;
     
     /*
@@ -18,14 +17,14 @@ public class PlagiarismChecker {
     public boolean loadFiles(String[] paths) {
         // Llenar las estructuras (recomendado)
         // Lectura del archivo (recomendado)
-        textFiles = new QueueLink<BinaryTree<String>>();
+        textFiles = (BST[])new Object[paths.length];
         try{
             Scanner fileIn;
-            for(String path : paths) {
-                if(path == null) continue;
-                fileIn = new Scanner(new FileReader(path));
+            for(int i = 0; i<paths.length; i++) {
+                if(paths[i] == null) continue;
+                fileIn = new Scanner(new FileReader(paths[i]));
                 
-                textFiles.add(inputTreeText(fileIn));
+                textFiles[i] = inputTreeText(fileIn);
                 fileIn.close();
             }
         } catch(FileNotFoundException e){ 
@@ -71,7 +70,7 @@ public class PlagiarismChecker {
         return text;
     }
 
-    public QueueLink<BinaryTree<String>> getTextFiles() {
+    public BST<String>[] getTextFiles() {
         return this.textFiles;
     }
 }
