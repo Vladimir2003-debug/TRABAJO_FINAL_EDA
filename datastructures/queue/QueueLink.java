@@ -60,6 +60,13 @@ public class QueueLink<E> implements TDAQueue<E>{
 			throw new NoSuchElementException();
 		return poll();
 	}
+	public int size() {
+		int size = 0;
+		for(Node<E> tmp = this.head; tmp != null; tmp = tmp.getNext()){
+			size++;
+		}
+		return size;
+	}
 
 	/**
 	 * Este metodo imprime todos los elementos de la cola
