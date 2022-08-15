@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class PlagiarismChecker {
     public BST<String>[] textFiles; 
     public BST<String> textToChecker;
-    
+
     /*
      * @param paths: Rutas de los archivos que forman la BD.
      * 
@@ -17,7 +17,7 @@ public class PlagiarismChecker {
     public boolean loadFiles(String[] paths) {
         // Llenar las estructuras (recomendado)
         // Lectura del archivo (recomendado)
-        textFiles = (BST[])new Object[paths.length];
+        textFiles = new BST[paths.length];
         try{
             Scanner fileIn;
             for(int i = 0; i<paths.length; i++) {
@@ -51,7 +51,7 @@ public class PlagiarismChecker {
             System.out.println("Archivo no encontrado");
         }
         
-        ResultChecker result = new ResultChecker();
+        ResultChecker result = new ResultChecker(textFiles.length,textFiles,textToChecker);
         // Retornar resultados del sistema (obligatorio)
         return result;
     }
