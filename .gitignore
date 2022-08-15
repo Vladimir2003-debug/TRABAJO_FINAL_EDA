@@ -76,5 +76,3 @@ lombok
 .project
 test/resources/projects/**/.vscode
 test/resources/projects/maven/salut/testGradle
-
-texto.txt
