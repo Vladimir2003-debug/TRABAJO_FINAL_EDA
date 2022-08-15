@@ -3,6 +3,9 @@ import java.io.FileReader;
 import datastructures.queue.*;
 import datastructures.binarytree.*;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PlagiarismChecker {
     public QueueLink<BinaryTree<String>> textFiles; 
     public BST<String> textToChecker;
@@ -55,8 +58,15 @@ public class PlagiarismChecker {
     }
     public BST<String> inputTreeText(Scanner fileIn) {
         BST<String> text = new BST<String>();
+        String line;
+        
         while(fileIn.hasNextLine()){
-            text.insert(fileIn.nextLine());
+            line = fileIn.nextLine();
+            Pattern pattern = Pattern.compile("<.*></.*>");
+            Matcher matcher = pattern.matcher(line);
+            boolean matchFound = matcher.find();
+            if(!matchFound)  
+                text.insert(line);
         }
         return text;
     }
