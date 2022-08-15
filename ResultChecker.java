@@ -1,3 +1,5 @@
+// INTENTO USAR EL METODO SEARCH PARA ENCONTRAR UNA COINCIDENCIA
+//PERO TENGO ALGUNOS ERRORES
 import datastructures.binarytree.*;
 public class ResultChecker {
     private boolean[] result;
