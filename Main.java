@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Main extends JFrame {
     public String path = ".";
     public String[] paths;
-    public PlagiarismChecker pc;
+    public static PlagiarismChecker pc;
     public Main(){
         setTitle("Plagiarism Checker");
         setSize(300,400);
@@ -44,7 +44,7 @@ public class Main extends JFrame {
     public static void main(String[] args) {
         new Main();
 
-
+        pc = new PlagiarismChecker();
         File folder = new File("./reuters21578");
 
         File[] listOfFiles = folder.listFiles();
@@ -56,6 +56,20 @@ public class Main extends JFrame {
             }
             i++;
         }
+
+        pc .loadFiles(paths);
+
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
+        System.out.println(pc.getTextFiles().poll().inOrder());
 
     }
 }
