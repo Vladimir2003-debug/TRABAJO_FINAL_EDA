@@ -2,12 +2,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import datastructures.binarytree.*;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PlagiarismChecker {
-    public BST<String>[] textFiles;
-    public BST<String> textToChecker;
+    private BST<String>[] textFiles;
+    private BST<String> textToChecker;
 
     /*
      * @param paths: Rutas de los archivos que forman la BD.
