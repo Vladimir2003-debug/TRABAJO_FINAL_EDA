@@ -125,6 +125,14 @@ public class Main extends JFrame {
 
                 pc.loadFiles(paths);
                 System.out.println(pc.getTextFiles()[10].inOrder());
+                ResultChecker results = pc.verifyPlagiarism(pathFile);
+                
+                int size = results.getResult().length; 
+                i = 0;
+                while(i < size) {
+                    add(new JLabel(i + " Resultado :" + results.getResult()[i]));
+                    i++;
+                }
             }
         }
     }
