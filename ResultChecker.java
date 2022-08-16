@@ -35,5 +35,9 @@ public class ResultChecker {
     	//......compara Y cosas
     	return 0; //%coincidencia...
     }
+    
+    public boolean[] getResult() {
+        return this.result;
+    }
    
 }
