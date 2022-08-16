@@ -64,7 +64,7 @@ public class PlagiarismChecker {
         while (fileIn.hasNextLine()) {
             line = fileIn.nextLine();
             if (line.indexOf("<BODY>") != -1) {
-                while (line.indexOf("</BODY>") == -1 && fileIn.hasNextLine()) {
+                while (line.indexOf("</BODY>") == -1) {
                     line += fileIn.nextLine();
                 }
                 text.insert(line + " : ");
