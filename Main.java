@@ -29,18 +29,18 @@ public class Main extends JFrame {
         btnSelectDir = new JButton("Select Directory");
         btnChecker = new JButton("Checker");
         btnSelectFile = new JButton("Select File");
-        JTextArea instrucciones = new JTextArea("La forma de uso de este programa es la siguiente:\n" + 
-            "- Select Dir : Para seleccionar un directorio\n" + 
-            "- Select File : Para la ubicacion del archivo para comprobacion\n" + 
-            "- Checker : Para evaluar y comparar los archivos y evaluar si hubo plagio o no\n");
+        JTextArea instrucciones = new JTextArea("La forma de uso de este programa es la siguiente:\n" +
+                "- Select Dir : Para seleccionar un directorio\n" +
+                "- Select File : Para la ubicacion del archivo para comprobacion\n" +
+                "- Checker : Para evaluar y comparar los archivos y evaluar si hubo plagio o no\n");
         instrucciones.setEditable(false);
         JTextArea descripcion = new JTextArea("En este programa se comparara\n" +
-            "un archivo con las distintas bases de datos para evaluar si hubo plagio o no en ellas\n" + 
-            "el programa se realizo mediante el uso de arboles binarios");
-        descripcion.setEditable(false); 
-            
-        pathTextField = new JTextField(path, 24);
-        pathDataBase = new JTextField(pathFile, 24);
+                "un archivo con las distintas bases de datos para evaluar si hubo plagio o no en ellas\n" +
+                "el programa se realizo mediante el uso de arboles binarios");
+        descripcion.setEditable(false);
+
+        pathTextField = new JTextField(pathFile, 24);
+        pathDataBase = new JTextField(path, 24);
 
         JPanel p1 = new JPanel();
         JPanel p2 = new JPanel();
@@ -90,7 +90,7 @@ public class Main extends JFrame {
 
                 if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     pathDataBase.setText(chooser.getSelectedFile().getAbsolutePath());
-                    path = pathDataBase.getText(); 
+                    path = pathDataBase.getText();
 
                 }
             } else if (e.getActionCommand().equals("Select File")) {
@@ -124,12 +124,30 @@ public class Main extends JFrame {
                 }
 
                 pc.loadFiles(paths);
-                pc.verifyPlagiarism(pathFile);
+                System.out.println(pc.getTextFiles()[10].inOrder());
             }
         }
     }
 
     public static void main(String[] args) {
         new Main();
+        /* 
+        PlagiarismChecker pc = new PlagiarismChecker();
+        
+        File folder = new File("./reuters21578");
+
+        File[] listOfFiles = folder.listFiles();
+        String[] paths = new String[listOfFiles.length];
+        int i = 0;
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                paths[i] = file.getPath();
+            }
+            i++;
+        }
+
+        pc.loadFiles(paths);
+        System.out.println(pc.getTextFiles()[10].inOrder());
+        */
     }
 }
